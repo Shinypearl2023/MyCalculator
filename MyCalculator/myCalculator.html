@@ -1,0 +1,147 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/styles.css">
+        <title>My Calculator</title>
+        <script>
+
+            function clearInputs()
+            {
+                document.getElementById('txtNumber').value = "";
+                document.getElementById('txtEnteredOne').value = "";
+                document.getElementById('txtEnteredTwo').value = "";
+                document.getElementById('txtOperator').value = "";
+                document.getElementById('txtResults').value = "";
+
+            }
+
+            function displayPressedValue(value)
+            {
+                var number = value;
+                var numberOne = 0;
+                var numberTwo = 0;
+                var operator = document.getElementById('txtOperator').value;
+                var result = 0;
+
+                if( operator =='')
+                {
+                    if(value >= 0 && value <= 9 || value ==".")
+                    {
+                        document.getElementById('txtNumber').value += value;
+                        document.getElementById('txtEnteredOne').value += value;
+                    }
+                    else
+                    {
+                        numberOne = document.getElementById('txtEnteredOne').value;
+                        document.getElementById('txtOperator').value = value;
+                        document.getElementById('txtNumber').value += value;
+                    }
+                }
+                else
+                {
+                    if(value >= 0 && value <= 9 || value ==".")
+                    {
+                        document.getElementById('txtNumber').value += value;
+                        document.getElementById('txtEnteredTwo').value += value;
+                    }
+                    else
+                    {
+                        document.getElementById('txtNumber').value += value;
+                        numberOne = Number.parseFloat(document.getElementById('txtEnteredOne').value);
+                        numberTwo = Number.parseFloat(document.getElementById('txtEnteredTwo').value);
+                        
+                        if(operator == ' + ' )
+                        document.getElementById('txtResult').value = numberOne + numberTwo;
+                            else if(operator == ' - ' )
+                            document.getElementById('txtResult').value = numberOne - numberTwo;
+                            else if(operator == ' / ' )
+                            document.getElementById('txtResult').value = numberOne / numberTwo;
+                            else if(operator == ' * ' )
+                            document.getElementById('txtResult').value = numberOne * numberTwo;
+                        
+                        if(value == ' = ' )
+                        {
+                            
+                            document.getElementById('txtNumber').value += document.getElementById('txtResult').value;
+                        }     
+                    }
+                } 
+            }
+
+        </script>
+    </head>
+    <body>
+        <div  style="border: 1px solid black;width: 230px; box-shadow: 5px 10px #888888">
+        <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">My Calculator</h1>
+        <table border="0" style="width:200px;height: auto;">
+            <tr>
+                <td width="50px">
+                    <button class="button-4" onclick="displayPressedValue(7)" id="btn7" width="49px">7</button>
+                </td>
+                <td width="50px">
+                    <button class="button-4" onclick="displayPressedValue(8)" id="btn8">8</button>
+                </td>
+                <td width="50px">
+                    <button class="button-4" onclick="displayPressedValue(9)" id="btn9">9</button>
+                </td>
+                <td width="50px">
+                    <button class="button-4" onclick="displayPressedValue(' / ')" id="btnDivide">/</button>
+                </td>
+            </tr>
+                <tr>
+                    <td style="width:25%;">
+                        <button class="button-4" onclick="displayPressedValue(4)" id="btn4">4</button>
+                    </td>
+                    <td style="width:25%">
+                        <button class="button-4" onclick="displayPressedValue(5)" id="btn5">5</button>
+                    </td>
+                    <td style="width:25%">
+                        <button class="button-4" onclick="displayPressedValue(6)" id="btn6">6</button>
+                    </td>
+                    <td style="width:25%">
+                        <button class="button-4" onclick="displayPressedValue(' * ')" id="btnMultiply">*</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="button-4" onclick="displayPressedValue(1)" id="btn1">1</button>
+                    </td>
+                    <td>
+                        <button class="button-4" onclick="displayPressedValue(2)" id="btn2">2</button>
+                    </td>
+                    <td>
+                        <button class="button-4" onclick="displayPressedValue(3)" id="btn3">3</button>
+                    </td>
+                    <td>
+                        <button class="button-4" onclick="displayPressedValue(' - ')" id="btnSubtract">-</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="button-4" onclick="displayPressedValue('.')" id="btnDot">.</button>
+                    </td>
+                    <td>
+                        <button class="button-4" onclick="displayPressedValue('0')" id="btnZero">0</button>
+                    </td>
+                    <td>
+                        <button class="button-4" onclick="clearInputs()" id="btnClear">C</button>
+                    </td>
+                    <td>
+                        <button class="button-4" onclick="displayPressedValue(' + ')" id="btnPlus">+</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <input type="text" id="txtNumber">
+                    </td>
+                    <td>
+                        <button class="button-4" onclick="displayPressedValue(' = ')" id="btnEquals">=</button>
+                    </td>
+                </tr>
+        </table>
+    </div>
+        <input type="text" id="txtEnteredOne" style="width:1px; border: 0px;background-color: white;height:1px;">
+        <input type="text" id="txtEnteredTwo" style="width:1px; border: 0px;background-color: #888888;height:1px;">
+        <input type="text" id="txtOperator" style="width:1px; border: 0px;background-color: #888888;height:1px;">
+        <input type="text" id="txtResult" style="width:1px; border: 0px;background-color: #888888;height:1px;">
+    </body>
+</html>
